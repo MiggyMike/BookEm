@@ -19,14 +19,14 @@ const Header = (props) => {
                 </Nav.Link>
                 <Nav.Link href='/reviews'>Reviews</Nav.Link>
                 <Nav.Link href='/services'>Services</Nav.Link>
-                <Nav.Link href='/profile'>Profile</Nav.Link>
-                <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-                  <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
+                <Nav.Link href='#'>Books</Nav.Link>
+                <NavDropdown title='Acct' id='basic-nav-dropdown'>
+                  <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
                   <NavDropdown.Item href='/create'>
                     Post Service
                   </NavDropdown.Item>
                   <NavDropdown.Item href='#action/3.3'>
-                    Something
+                    Settings
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href='#action/3.4'>

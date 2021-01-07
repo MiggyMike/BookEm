@@ -44,6 +44,7 @@ const CreateService = async (req, res) => {
       ...req.body,
       user_id: req.params.user_id,
     });
+    console.log('SC:', req.params.user_id);
     newService.save();
     res.send(newService);
   } catch (error) {

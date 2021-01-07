@@ -5,6 +5,9 @@ import Layout from './Layout';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
+import Profile from '../pages/Profile';
+import Services from '../pages/Services';
+import CreateServices from '../pages/CreateServices';
 
 function Router(props) {
   const [pageLoading, updatePageLoading] = useState(true);
@@ -75,6 +78,36 @@ function Router(props) {
               path='/login'
               component={() => (
                 <Login
+                  currentUser={currentUser}
+                  authenticated={authenticated}
+                  toggleAuthenticated={toggleAuthenticated}
+                />
+              )}
+            />
+            <Route
+              path='/profile'
+              component={() => (
+                <Profile
+                  currentUser={currentUser}
+                  authenticated={authenticated}
+                  toggleAuthenticated={toggleAuthenticated}
+                />
+              )}
+            />
+            <Route
+              path='/services'
+              component={() => (
+                <Services
+                  currentUser={currentUser}
+                  authenticated={authenticated}
+                  toggleAuthenticated={toggleAuthenticated}
+                />
+              )}
+            />
+            <Route
+              path='/create'
+              component={() => (
+                <CreateServices
                   currentUser={currentUser}
                   authenticated={authenticated}
                   toggleAuthenticated={toggleAuthenticated}
