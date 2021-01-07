@@ -29,8 +29,6 @@ function Router(props) {
         updateUser(session.user);
         updateAuthenticated(true);
         props.history.push(window.location.pathname);
-        //^^this might not be necessary and also might cause problems
-        //should test it when we test login and such
       } catch (error) {
         updateUser(null);
         updateAuthenticated(false);
@@ -56,6 +54,7 @@ function Router(props) {
               path='/'
               component={() => (
                 <Home
+                  {...props}
                   currentUser={currentUser}
                   authenticated={authenticated}
                   toggleAuthenticated={toggleAuthenticated}

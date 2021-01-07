@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-function Home() {
+function Home(props) {
   return (
     <div>
       <>carasoule</>
@@ -13,8 +13,12 @@ function Home() {
         provide to allow others to book or purchase.
       </p>
       <div>
-        <Button href='/register'>Register</Button>
-        <Button href='/login'>Login</Button>
+        {!props.authenticaded && props.currentUser ? null : (
+          <div>
+            <Button href='/register'>Register</Button>
+            <Button href='/login'>Login</Button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -3,11 +3,11 @@ import { withRouter } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 
 const Header = (props) => {
-  console.log('header:', props);
+  // console.log('header:', props.currentUser);
 
   return (
     <header>
-      {props.authenticated && props.currenterUser ? (
+      {props.authenticated && props.currentUser ? (
         <Navbar bg='light' expand='lg' collapseOnSelect>
           <Container>
             <Navbar.Brand href='/'>BookIt</Navbar.Brand>
