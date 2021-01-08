@@ -1,8 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
+import Services from './Services';
 
 function Home(props) {
+  console.log('HM:', props);
   return (
     <div>
       <>carasoule</>
@@ -20,6 +22,11 @@ function Home(props) {
           </div>
         )}
       </div>
+      {/* also want to map some services here */}
+      {/* <div>
+        <h2> Services</h2>
+        <Services />
+      </div> */}
     </div>
   );
 }
