@@ -21,7 +21,7 @@ export const __GetServices = async (page, limit) => {
   }
 };
 
-export const __GetServices_2 = async (userId) => {
+export const __GetUserService = async (userId) => {
   try {
     const res = await ApiClient.get(`/services/user/${userId}`);
     return res.data;
@@ -30,7 +30,7 @@ export const __GetServices_2 = async (userId) => {
   }
 };
 
-export const __GetService = async (serviceId) => {
+export const __GetServiceById = async (serviceId) => {
   try {
     const res = await ApiClient.get(`/services/${serviceId}`);
     return res.data;
