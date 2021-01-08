@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Card, Row, Col, Container } from 'react-bootstrap';
+import { Card, Row, Col, Container, Button } from 'react-bootstrap';
 import { __GetProfile } from '../services/UserServices';
+import { __DeleteService } from '../services/ServiceServices';
 
 const Profile = (props) => {
   console.log('profile:', props);
@@ -22,49 +23,60 @@ const Profile = (props) => {
     getUserServs();
   }, []);
 
+  const deleteService = async (id) => {
+    try {
+      const res = services.filter((service) => service._id !== id);
+      setServices(res.services);
+      await __DeleteService(id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Container>
         <h1>Profile</h1>
         <h4>Welcome to your profile</h4>
-        {/* <p>{props.services[2].price}</p> */}
-        {/* need to structure this and pull by user id */}
-        {/* <p>{props.services[0].service}</p> */}
         <Row>
           {services.length ? (
-            <div>
-              {services.map((service) => (
+            services.map((service) => (
+              <Col sm={3} md={4} lg={6}>
                 <div key={service._id}>
-                  <Card style={{ width: '15rem' }}>
+                  <Card>
                     <div>
                       <div>
-                        <h3>{service.title}</h3>
-                        <p>{service.description}</p>
+                        <h3>{service.service}</h3>
                       </div>
                     </div>
                     <img src={service.image_url} alt='sf' />
+
+                    <Card.Body>
+                      <Button
+                        onClick={() =>
+                          props.history.push(`/edit/${service._id}`)
+                        }
+                      >
+                        edit
+                      </Button>
+                      <Button onClick={() => deleteService(service._id)}>
+                        delete
+                      </Button>
+                    </Card.Body>
                   </Card>
                   <div>
-                    <button>Edit</button>
-                    <button onClick={() => this.deleteservice(service._id)}>
+                    <Button>Edit</Button>
+                    <Button onClick={() => this.deleteservice(service._id)}>
                       Delete
-                    </button>
+                    </Button>
                   </div>
                 </div>
-              ))}
-            </div>
+              </Col>
+            ))
           ) : (
             <div className='span message'>No Services Available</div>
           )}
         </Row>
-        {/* <Row>
-        {service.length &&
-          props.services.map((service) => (
-            <Col sm={12} md={6} lg={4} xl={3}>
-              <h3>{props.services.service}</h3>
-            </Col>
-          ))}
-      </Row> */}
       </Container>
     </div>
   );
