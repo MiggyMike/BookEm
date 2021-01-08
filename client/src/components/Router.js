@@ -72,14 +72,7 @@ function Router(props) {
             <Route
               exact
               path='/'
-              component={() => (
-                <Home
-                  {...props}
-                  currentUser={currentUser}
-                  authenticated={authenticated}
-                  toggleAuthenticated={toggleAuthenticated}
-                />
-              )}
+              component={(props) => <Home {...props} services={services} />}
             />
             <Route
               path='/register'
@@ -109,19 +102,12 @@ function Router(props) {
                   currentUser={currentUser}
                   authenticated={authenticated}
                   toggleAuthenticated={toggleAuthenticated}
-                  services={services}
                 />
               )}
             />
             <Route
               path='/services'
-              component={() => (
-                <Services
-                  currentUser={currentUser}
-                  authenticated={authenticated}
-                  toggleAuthenticated={toggleAuthenticated}
-                />
-              )}
+              component={(props) => <Services props={props} />}
             />
             <Route
               path='/create'
