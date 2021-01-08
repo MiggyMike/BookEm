@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { __CheckSession } from '../services/UserServices';
+import { __GetServices } from '../services/ServiceServices';
 import Layout from './Layout';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
@@ -39,6 +40,22 @@ function Router(props) {
       }
     }
   };
+
+  const [services, setServices] = useState([]);
+
+  const getServs = async () => {
+    try {
+      const res = await __GetServices();
+      setServices(res);
+      console.log('SRV:', res);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    getServs();
+  }, []);
 
   return (
     <div>
@@ -88,9 +105,11 @@ function Router(props) {
               path='/profile'
               component={() => (
                 <Profile
+                  props={props}
                   currentUser={currentUser}
                   authenticated={authenticated}
                   toggleAuthenticated={toggleAuthenticated}
+                  services={services}
                 />
               )}
             />
