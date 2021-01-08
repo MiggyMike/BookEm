@@ -46,7 +46,7 @@ const Header = (props) => {
               <Nav className='ml-auto'>
                 <Nav.Link href='/login'>Log In</Nav.Link>
                 <Nav.Link href='/reviews'>Reviews</Nav.Link>
-                <Nav.Link href='/'>Services</Nav.Link>
+                <Nav.Link href='/services'>Services</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
