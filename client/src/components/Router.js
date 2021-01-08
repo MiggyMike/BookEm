@@ -107,7 +107,7 @@ function Router(props) {
             />
             <Route
               path='/services'
-              component={(props) => <Services props={props} />}
+              component={(props) => <Services {...props} services={services} />}
             />
             <Route
               path='/create'
