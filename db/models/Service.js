@@ -17,8 +17,8 @@ module.exports = new Schema(
     duration: {
       type: String,
       required: true,
-      unique: true,
-      index: true,
+      // unique: true,
+      // index: true,
     },
     price: {
       type: Number,
