@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 
 const Header = (props) => {
@@ -10,28 +11,41 @@ const Header = (props) => {
       {props.authenticated && props.currentUser ? (
         <Navbar bg='light' expand='lg' collapseOnSelect>
           <Container>
-            <Navbar.Brand href='/'>BookIt</Navbar.Brand>
+            <LinkContainer to='/'>
+              <Navbar.Brand>BookIt</Navbar.Brand>
+            </LinkContainer>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='ml-auto'>
-                <Nav.Link href='/' onClick={() => localStorage.clear()}>
-                  Log Out
-                </Nav.Link>
-                <Nav.Link href='/reviews'>Reviews</Nav.Link>
-                <Nav.Link href='/services'>Services</Nav.Link>
-                <Nav.Link href='#'>Books</Nav.Link>
+                <LinkContainer to='/'>
+                  <Nav.Link onClick={() => localStorage.clear()}>
+                    Log Out
+                  </Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/reviews'>
+                  <Nav.Link>Reviews</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/services'>
+                  <Nav.Link>Services</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/#'>
+                  <Nav.Link>Books</Nav.Link>
+                </LinkContainer>
                 <NavDropdown title='Acct' id='basic-nav-dropdown'>
-                  <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
-                  <NavDropdown.Item href='/create'>
-                    Post Service
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href='#action/3.3'>
-                    Settings
-                  </NavDropdown.Item>
+                  <LinkContainer to='/profile'>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/create'>
+                    <NavDropdown.Item>Post Service</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/action'>
+                    <NavDropdown.Item>Settings</NavDropdown.Item>
+                  </LinkContainer>
+
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href='#action/3.4'>
-                    Separated link
-                  </NavDropdown.Item>
+                  <LinkContainer to='/#action/3.4'>
+                    <NavDropdown.Item>Separated link</NavDropdown.Item>
+                  </LinkContainer>
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
@@ -40,13 +54,21 @@ const Header = (props) => {
       ) : (
         <Navbar bg='light' expand='lg' collapseOnSelect>
           <Container>
-            <Navbar.Brand href='/'>BookIt</Navbar.Brand>
+            <LinkContainer to='/#'>
+              <Navbar.Brand href='/'>BookIt</Navbar.Brand>
+            </LinkContainer>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='ml-auto'>
-                <Nav.Link href='/login'>Log In</Nav.Link>
-                <Nav.Link href='/reviews'>Reviews</Nav.Link>
-                <Nav.Link href='/services'>Services</Nav.Link>
+                <LinkContainer to='/login'>
+                  <Nav.Link>Log In</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/reviews'>
+                  <Nav.Link>Reviews</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/services'>
+                  <Nav.Link>Services</Nav.Link>
+                </LinkContainer>
               </Nav>
             </Navbar.Collapse>
           </Container>
