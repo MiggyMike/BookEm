@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { __GetServices } from '../services/ServiceServices';
+import Rating from '../components/Rating';
 
 import {
   Button,
@@ -96,12 +97,21 @@ function Home(props) {
                       <Card.Title>{service.service}</Card.Title>
                       <Card.Text>{service.description}</Card.Text>
                       <Card.Text>{service.duration}</Card.Text>
-                      <Card.Text>{service.price}</Card.Text>
-                      <Card.Text>{service.rating}</Card.Text>
-                      <Card.Text>{service.numReviews}</Card.Text>
+                      <Card.Text>${service.price}</Card.Text>
+                      <Card.Text>
+                        <small className='text-muted'>
+                          {service.rating} from {service.numReviews} reveiws
+                        </small>
+                      </Card.Text>
+                      <Card.Text>
+                        <Rating
+                          value={service.rating}
+                          text={`${service.numReviews} reviews`}
+                        />
+                      </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                      <small className='text-muted'>User name</small>
+                      <small className='text-muted'>{service.user_name}</small>
                     </Card.Footer>
                   </Card>
                 </CardGroup>
