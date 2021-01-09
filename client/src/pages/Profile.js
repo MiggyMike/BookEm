@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Card, Row, Col, Container, Button } from 'react-bootstrap';
+import {
+  Card,
+  CardDeck,
+  CardGroup,
+  Row,
+  Col,
+  Container,
+  Button,
+} from 'react-bootstrap';
 import { __GetProfile } from '../services/UserServices';
 import { __DeleteService } from '../services/ServiceServices';
 
@@ -41,35 +49,35 @@ const Profile = (props) => {
         <Row>
           {services.length ? (
             services.map((service) => (
-              <Col sm={3} md={4} lg={6}>
-                <div key={service._id}>
-                  <Card>
-                    <div>
+              <Col sm={3} md={4} lg={6} key={service._id}>
+                <div>
+                  <CardDeck>
+                    <Card>
                       <div>
-                        <h3>{service.service}</h3>
+                        <div>
+                          <h5>{service.service}</h5>
+                        </div>
                       </div>
-                    </div>
-                    <img src={service.image_url} alt='sf' />
+                      <Card.Img
+                        src={service.image_url}
+                        alt='sf'
+                        style={{ objectFit: 'fill' }}
+                      />
 
-                    <Card.Body>
-                      <Button
-                        onClick={() =>
-                          props.history.push(`/edit/${service._id}`)
-                        }
-                      >
-                        edit
-                      </Button>
-                      <Button onClick={() => deleteService(service._id)}>
-                        delete
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                  <div>
-                    <Button>Edit</Button>
-                    <Button onClick={() => this.deleteservice(service._id)}>
-                      Delete
-                    </Button>
-                  </div>
+                      <Card.Body>
+                        <Button
+                          onClick={() =>
+                            props.history.push(`/edit/${service._id}`)
+                          }
+                        >
+                          edit
+                        </Button>
+                        <Button onClick={() => deleteService(service._id)}>
+                          delete
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </CardDeck>
                 </div>
               </Col>
             ))
