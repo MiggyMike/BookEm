@@ -54,7 +54,7 @@ const Header = (props) => {
       ) : (
         <Navbar bg='light' expand='lg' collapseOnSelect>
           <Container>
-            <LinkContainer href='/'>
+            <LinkContainer to='/'>
               <Navbar.Brand>BookIt</Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
