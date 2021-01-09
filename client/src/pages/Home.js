@@ -106,7 +106,9 @@ function Home(props) {
                     />
                     <Card.Body>
                       <Card.Title>{service.service}</Card.Title>
-                      <Card.Text>{service.description}</Card.Text>
+                      <Card.Text className='text-truncate'>
+                        {service.description}
+                      </Card.Text>
                       <Card.Text>{service.duration}</Card.Text>
                       <Card.Text>${service.price}</Card.Text>
                       <Card.Text>
