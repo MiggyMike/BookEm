@@ -32,7 +32,13 @@ const Services = (props) => {
             services.map((service, index) => (
               <CardGroup key={service._id}>
                 <Card style={{ width: '15rem' }}>
-                  <Card.Img variant='top' src={service.image_url} />
+                  <Card.Img
+                    variant='top'
+                    src={service.image_url}
+                    onClick={() =>
+                      props.history.push(`/services/${service._id}`)
+                    }
+                  />
                   <Card.Body>
                     <Card.Title>{service.service}</Card.Title>
                     <Card.Text>{service.description}</Card.Text>

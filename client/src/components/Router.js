@@ -10,6 +10,7 @@ import Profile from '../pages/Profile';
 import Services from '../pages/Services';
 import CreateServices from '../pages/CreateServices';
 import UpdateService from '../pages/UpdateService';
+import ViewService from '../pages/ViewService';
 function Router(props) {
   const [pageLoading, updatePageLoading] = useState(true);
   const [authenticated, updateAuthenticated] = useState(false);
@@ -47,7 +48,7 @@ function Router(props) {
     try {
       const res = await __GetServices();
       setServices(res);
-      console.log('SRV:', res);
+      // console.log('SRV:', res);
     } catch (error) {
       throw error;
     }
@@ -106,8 +107,9 @@ function Router(props) {
               )}
             />
             <Route
+              exact
               path='/services'
-              component={(props) => <Services {...props} services={services} />}
+              component={(props) => <Services {...props} />}
             />
             <Route
               path='/create'
@@ -128,6 +130,10 @@ function Router(props) {
                   toggleAuthenticated={toggleAuthenticated}
                 />
               )}
+            />
+            <Route
+              path='/services/:service_id'
+              component={(props) => <ViewService {...props} />}
             />
           </Switch>
         </Layout>
