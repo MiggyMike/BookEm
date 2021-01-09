@@ -64,15 +64,21 @@ const Profile = (props) => {
                         style={{ objectFit: 'fill' }}
                       />
 
-                      <Card.Body>
+                      <Card.Body className='text-center'>
                         <Button
+                          className='ml-2'
+                          variant='outline-primary'
                           onClick={() =>
                             props.history.push(`/edit/${service._id}`)
                           }
                         >
                           edit
                         </Button>
-                        <Button onClick={() => deleteService(service._id)}>
+                        <Button
+                          className='ml-4'
+                          variant='outline-danger'
+                          onClick={() => deleteService(service._id)}
+                        >
                           delete
                         </Button>
                       </Card.Body>
