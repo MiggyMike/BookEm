@@ -30,7 +30,7 @@ const Services = (props) => {
         <Row>
           {services.length &&
             services.map((service, index) => (
-              <CardGroup>
+              <CardGroup key={service._id}>
                 <Card style={{ width: '15rem' }}>
                   <Card.Img variant='top' src={service.image_url} />
                   <Card.Body>
