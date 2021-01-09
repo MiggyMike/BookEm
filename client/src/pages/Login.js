@@ -65,8 +65,8 @@ function Login(props) {
         </Form>
 
         <div>
-          <Link to='/login' className='nav-active'>
-            <p>Have an account?</p>
+          <Link to='/register' className='nav-active'>
+            <p>Need to Register?</p>
           </Link>
         </div>
         {formError ? <p>Error While Logging In</p> : <p></p>}
