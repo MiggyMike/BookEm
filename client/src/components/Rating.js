@@ -2,7 +2,7 @@ import React from 'react';
 
 const Rating = ({ value, text, color }) => {
   return (
-    <div className='rating'>
+    <span className='rating'>
       <span>
         <i
           style={{ color }}
@@ -15,7 +15,7 @@ const Rating = ({ value, text, color }) => {
           }
         ></i>
       </span>
-      <>
+      <span>
         <i
           style={{ color }}
           className={
@@ -26,7 +26,7 @@ const Rating = ({ value, text, color }) => {
               : 'far fa-star'
           }
         ></i>
-      </>
+      </span>
       <span>
         <i
           style={{ color }}
@@ -64,7 +64,7 @@ const Rating = ({ value, text, color }) => {
         ></i>
       </span>
       <span>{text && text}</span>
-    </div>
+    </span>
   );
 };
 
