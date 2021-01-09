@@ -36,7 +36,7 @@ function Home(props) {
       <Container>
         <h1>home</h1>
         <div>
-          <Carousel fade='true'>
+          <Carousel fade={true}>
             <Carousel.Item>
               <img
                 style={{ height: '450px' }}
@@ -56,7 +56,7 @@ function Home(props) {
               <img
                 style={{ height: '450px' }}
                 className='d-block w-100'
-                src='https://images.unsplash.com/photo-1543352632-5a4b24e4d2a6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzB8fG1lYWwlMjBwcmVwfGVufDB8fDB8&auto=format&fit=crop&w=800&q=60'
+                src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.shape.mdpcdn.com%2Fsites%2Fshape.com%2Ffiles%2Fstyles%2Ffacebook_og_image%2Fpublic%2Ffb-meal-prep-challenge.jpg&f=1&nofb=1'
                 alt='Second slide'
               />
 
@@ -89,7 +89,7 @@ function Home(props) {
           <Row>
             {services.length &&
               services.map((service, index) => (
-                <CardGroup>
+                <CardGroup key={service._id}>
                   <Card style={{ width: '15rem' }}>
                     <Card.Img variant='top' src={service.image_url} />
                     <Card.Body>
