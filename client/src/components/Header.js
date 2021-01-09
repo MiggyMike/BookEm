@@ -17,10 +17,15 @@ const Header = (props) => {
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='ml-auto'>
-                <LinkContainer to='/'>
-                  <Nav.Link onClick={() => localStorage.clear()}>
-                    Log Out
-                  </Nav.Link>
+                <LinkContainer
+                  to='/'
+                  onClick={() =>
+                    props.toggleAuthenticated(false, null, () =>
+                      props.history.push('/')
+                    )
+                  }
+                >
+                  <Nav.Link>Log Out</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/reviews'>
                   <Nav.Link>Reviews</Nav.Link>
