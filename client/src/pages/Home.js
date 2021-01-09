@@ -12,6 +12,8 @@ import {
   Row,
   Col,
   CardGroup,
+  Image,
+  Spinner,
 } from 'react-bootstrap';
 
 function Home(props) {
@@ -39,8 +41,9 @@ function Home(props) {
         <div>
           <Carousel fade={true}>
             <Carousel.Item>
-              <img
-                style={{ height: '450px' }}
+              <Image
+                fluid
+                style={{ maxHeight: '400px', objectFit: 'fit' }}
                 className='d-block w-100'
                 src={
                   'https://images.unsplash.com/photo-1519500528352-2d1460418d41?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8YmFyYmVyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
@@ -54,8 +57,9 @@ function Home(props) {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                style={{ height: '450px' }}
+              <Image
+                fluid
+                style={{ objectFit: 'contain' }}
                 className='d-block w-100'
                 src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.shape.mdpcdn.com%2Fsites%2Fshape.com%2Ffiles%2Fstyles%2Ffacebook_og_image%2Fpublic%2Ffb-meal-prep-challenge.jpg&f=1&nofb=1'
                 alt='Second slide'
@@ -66,8 +70,9 @@ function Home(props) {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                style={{ height: '450px' }}
+              <Image
+                fluid
+                style={{ objectFit: 'fit' }}
                 className='d-block w-100'
                 src='https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzB8fGZpdG5lc3N8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
                 alt='Third slide'
@@ -88,7 +93,7 @@ function Home(props) {
         </p>
         <Container>
           <Row>
-            {services.length &&
+            {services.length ? (
               services.map((service, index) => (
                 <CardGroup key={service._id}>
                   <Card style={{ width: '15rem' }}>
@@ -121,7 +126,12 @@ function Home(props) {
                     </Card.Footer>
                   </Card>
                 </CardGroup>
-              ))}
+              ))
+            ) : (
+              <Spinner animation='border' role='status'>
+                <span className='sr-only'>Loading...</span>
+              </Spinner>
+            )}
           </Row>
         </Container>
 
