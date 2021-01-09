@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { __GetServices } from '../services/ServiceServices';
 import Rating from '../components/Rating';
-
+import { LinkContainer } from 'react-router-bootstrap';
 import {
   Button,
   Card,
@@ -122,8 +122,12 @@ function Home(props) {
         <div>
           {!props.authenticaded && props.currentUser ? null : (
             <div>
-              <Button href='/register'>Register</Button>
-              <Button href='/login'>Login</Button>
+              <LinkContainer to='/register'>
+                <Button>Register</Button>
+              </LinkContainer>
+              <LinkContainer to='/login'>
+                <Button>Login</Button>
+              </LinkContainer>
             </div>
           )}
         </div>
