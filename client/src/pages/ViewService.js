@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { __GetServiceById } from '../services/ServiceServices';
 import { Link, withRouter } from 'react-router-dom';
-import { Row, Col, Image, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Image, Card, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
 
 const ViewService = (props) => {
-  const [service, setService] = useState('');
+  const [service, setService] = useState({});
 
   const getServId = async () => {
     try {
       const res = await __GetServiceById(props.match.params.service_id);
-      console.log('SGNL SRV:', res.data);
-      setService(res.data);
+      console.log('SGNL SRV:', res);
+      setService(res);
     } catch (error) {
       console.log(error);
     }
@@ -21,11 +21,23 @@ const ViewService = (props) => {
     getServId();
   }, []);
 
-  console.log('SNGL SRV2:', services);
+  // console.log('SNGL SRV2:', );
   return (
     <div>
-      <h1>Service</h1>
-      <p>{service.price}</p>
+      <Container>
+        <h1>{service.service}</h1>
+        <Rating value={service.rating} text={`${service.numReviews} reviews`} />
+        <Image
+          src={service.image_url}
+          style={{ objectFit: 'fit' }}
+          fluid
+        ></Image>
+
+        <p>{service.description}</p>
+
+        <p>{service.duration}</p>
+        <p>${service.price}</p>
+      </Container>
     </div>
   );
 };
