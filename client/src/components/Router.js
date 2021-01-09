@@ -9,7 +9,7 @@ import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Services from '../pages/Services';
 import CreateServices from '../pages/CreateServices';
-
+import UpdateService from '../pages/UpdateService';
 function Router(props) {
   const [pageLoading, updatePageLoading] = useState(true);
   const [authenticated, updateAuthenticated] = useState(false);
@@ -113,6 +113,16 @@ function Router(props) {
               path='/create'
               component={() => (
                 <CreateServices
+                  currentUser={currentUser}
+                  authenticated={authenticated}
+                  toggleAuthenticated={toggleAuthenticated}
+                />
+              )}
+            />
+            <Route
+              path='/edit/:service_id'
+              component={() => (
+                <UpdateService
                   currentUser={currentUser}
                   authenticated={authenticated}
                   toggleAuthenticated={toggleAuthenticated}
