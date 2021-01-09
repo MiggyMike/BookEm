@@ -47,6 +47,11 @@ module.exports = new Schema(
         ref: 'reviews',
       },
     ],
+    user_name: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'users',
+    },
   },
   { timestamps: true }
 );
