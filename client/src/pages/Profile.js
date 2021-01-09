@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import {
+  Accordion,
   Card,
   CardDeck,
   CardGroup,
@@ -49,13 +50,13 @@ const Profile = (props) => {
         <Row>
           {services.length ? (
             services.map((service) => (
-              <Col sm={3} md={4} lg={6} key={service._id}>
+              <Col sm={6} md={4} lg={4} key={service._id}>
                 <div>
                   <CardDeck>
                     <Card>
                       <div>
                         <div>
-                          <h5>{service.service}</h5>
+                          <h5 className='text-truncate'>{service.service}</h5>
                         </div>
                       </div>
                       <Card.Img
@@ -64,24 +65,45 @@ const Profile = (props) => {
                         style={{ objectFit: 'fill' }}
                       />
 
-                      <Card.Body className='text-center'>
-                        <Button
-                          className='ml-2'
-                          variant='outline-primary'
-                          onClick={() =>
-                            props.history.push(`/edit/${service._id}`)
-                          }
+                      <Accordion>
+                        <Accordion.Toggle
+                          as={Card.Header}
+                          variant=''
+                          eventKey='0'
                         >
-                          edit
-                        </Button>
-                        <Button
-                          className='ml-4'
-                          variant='outline-danger'
-                          onClick={() => deleteService(service._id)}
-                        >
-                          delete
-                        </Button>
-                      </Card.Body>
+                          <i class='fas fa-ellipsis-v'></i>
+                        </Accordion.Toggle>
+
+                        <Accordion.Collapse eventKey='0'>
+                          <Card.Body>
+                            <Row>
+                              <Col>
+                                <Button
+                                  className='text-left'
+                                  variant='primary'
+                                  onClick={() =>
+                                    props.history.push(`/edit/${service._id}`)
+                                  }
+                                  style={{ fontSize: '1rem' }}
+                                >
+                                  <i class='fas fa-edit'></i>
+                                </Button>
+                              </Col>
+
+                              <Col className='text-right'>
+                                <Button
+                                  className=' text-right'
+                                  variant='danger'
+                                  onClick={() => deleteService(service._id)}
+                                  style={{ fontSize: '1rem' }}
+                                >
+                                  <i class='fas fa-trash'></i>
+                                </Button>
+                              </Col>
+                            </Row>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Accordion>
                     </Card>
                   </CardDeck>
                 </div>
