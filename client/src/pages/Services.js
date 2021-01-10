@@ -2,8 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { __GetServices } from '../services/ServiceServices';
 import Service from '../components/Service';
-import { Card, CardGroup, Container, Row, Col } from 'react-bootstrap';
-
+import {
+  Card,
+  CardDeck,
+  CardGroup,
+  Container,
+  Row,
+  Col,
+} from 'react-bootstrap';
+import Rating from '../components/Rating';
 const Services = (props) => {
   // console.log('SRV:', props);
   const [services, setServices] = useState([]);
@@ -30,28 +37,46 @@ const Services = (props) => {
         <Row>
           {services.length &&
             services.map((service, index) => (
-              <CardGroup key={service._id}>
-                <Card style={{ width: '15rem' }}>
-                  <Card.Img
-                    variant='top'
-                    src={service.image_url}
-                    onClick={() =>
-                      props.history.push(`/services/${service._id}`)
-                    }
-                  />
-                  <Card.Body>
-                    <Card.Title>{service.service}</Card.Title>
-                    <Card.Text>{service.description}</Card.Text>
-                    <Card.Text>{service.duration}</Card.Text>
-                    <Card.Text>{service.price}</Card.Text>
-                    <Card.Text>{service.rating}</Card.Text>
-                    <Card.Text>{service.numReviews}</Card.Text>
-                  </Card.Body>
-                  <Card.Footer>
-                    <small className='text-muted'>User name</small>
-                  </Card.Footer>
-                </Card>
-              </CardGroup>
+              <Col sm={6} md={6} lg={3}>
+                <CardGroup key={service._id}>
+                  <Card>
+                    <Card.Img
+                      variant='top'
+                      src={service.image_url}
+                      onClick={() =>
+                        props.history.push(`/services/${service._id}`)
+                      }
+                    />
+                    <Card.Body>
+                      <Card.Title>{service.service}</Card.Title>
+                      <Card.Text
+                        className='text-truncate'
+                        style={{ wordWrap: 'normal' }}
+                      >
+                        {service.description}
+                      </Card.Text>
+                      <Row>
+                        <Col className='text-left'>
+                          <Card.Text>{service.duration}</Card.Text>
+                        </Col>
+                        <Col className='text-right'>
+                          <Card.Text>${service.price}</Card.Text>
+                        </Col>
+                      </Row>
+
+                      <Card.Text>
+                        <Rating
+                          value={service.rating}
+                          text={`${service.numReviews} reviews`}
+                        />
+                      </Card.Text>
+                    </Card.Body>
+                    <Card.Footer>
+                      <small className='text-muted'>User name</small>
+                    </Card.Footer>
+                  </Card>
+                </CardGroup>
+              </Col>
             ))}
         </Row>
       </Container>
