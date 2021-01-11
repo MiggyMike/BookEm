@@ -27,15 +27,15 @@ const Header = (props) => {
                 >
                   <Nav.Link>Log Out</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to='/reviews'>
+                {/* <LinkContainer to='/reviews'>
                   <Nav.Link>Reviews</Nav.Link>
-                </LinkContainer>
+                </LinkContainer> */}
                 <LinkContainer to='/services'>
                   <Nav.Link>Services</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to='/#'>
+                {/* <LinkContainer to='/#'>
                   <Nav.Link>Books</Nav.Link>
-                </LinkContainer>
+                </LinkContainer> */}
                 <NavDropdown title='Acct' id='basic-nav-dropdown'>
                   <LinkContainer to='/profile'>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
@@ -45,11 +45,6 @@ const Header = (props) => {
                   </LinkContainer>
                   <LinkContainer to='/action'>
                     <NavDropdown.Item>Settings</NavDropdown.Item>
-                  </LinkContainer>
-
-                  <NavDropdown.Divider />
-                  <LinkContainer to='/#action/3.4'>
-                    <NavDropdown.Item>Separated link</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               </Nav>
@@ -68,9 +63,9 @@ const Header = (props) => {
                 <LinkContainer to='/login'>
                   <Nav.Link>Log In</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to='/reviews'>
+                {/* <LinkContainer to='/reviews'>
                   <Nav.Link>Reviews</Nav.Link>
-                </LinkContainer>
+                </LinkContainer> */}
                 <LinkContainer to='/services'>
                   <Nav.Link>Services</Nav.Link>
                 </LinkContainer>
