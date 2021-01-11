@@ -95,10 +95,10 @@ const ViewService = (props) => {
         <Row>
           {service.reviews ? (
             service.reviews.map((review) => (
-              <Col md={6}>
+              <Col md={6} key={review._id}>
                 <h2>Reviews</h2>
                 <ListGroup variant='flush'>
-                  <ListGroup.Item key={review._id}>
+                  <ListGroup.Item>
                     <strong>{review.user_id.name}</strong>
                     <Row>
                       <Col>
