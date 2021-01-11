@@ -93,23 +93,36 @@ const ViewService = (props) => {
         </Row>
 
         <Row>
-          <Col md={6}>
-            <h2>Reviews</h2>
-            <ListGroup variant='flush'>
-              {service.reviews ? (
-                service.reviews.map((review) => (
+          {service.reviews ? (
+            service.reviews.map((review) => (
+              <Col md={6}>
+                <h2>Reviews</h2>
+                <ListGroup variant='flush'>
                   <ListGroup.Item key={review._id}>
                     <strong>{review.user_id.name}</strong>
-                    <Rating value={review.rating} />
-                    <p>{review.createdAt.substring(0, 10)}</p>
-                    <p>{review.comment}</p>
+                    <Row>
+                      <Col>
+                        <div>{review.comment}</div>
+                      </Col>
+                      <Rating value={review.rating} />
+                    </Row>
+                    <div>
+                      <small className='text-muted'>
+                        {review.createdAt.substring(0, 10)}
+                      </small>
+                    </div>
                   </ListGroup.Item>
-                ))
-              ) : (
+                </ListGroup>
+              </Col>
+            ))
+          ) : (
+            <Col md={6}>
+              <h2>Reviews</h2>
+              <ListGroup variant='flush'>
                 <Alert variant='warning'>No comments</Alert>
-              )}
-            </ListGroup>
-          </Col>
+              </ListGroup>
+            </Col>
+          )}
           <Col>
             <ListGroup>
               <ListGroup.Item>
@@ -119,6 +132,7 @@ const ViewService = (props) => {
                   rating={rating}
                   service_id={service._id}
                   currentUser={props.currentUser}
+                  service={service}
                 />
               </ListGroup.Item>
             </ListGroup>
