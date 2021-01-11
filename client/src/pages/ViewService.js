@@ -9,12 +9,20 @@ import {
   Card,
   Button,
   ListGroup,
+  Alert,
+  Form,
+  FormLabel,
 } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import { LinkContainer } from 'react-router-bootstrap';
+import CreateReview from '../components/CreateReview';
+import Login from './Login';
+import Services from './Services';
 
 const ViewService = (props) => {
   const [service, setService] = useState({});
+  const [rating, setRating] = useState(0);
+  // const [comment, setComment] = useState('');
 
   const getServId = async () => {
     try {
@@ -30,23 +38,10 @@ const ViewService = (props) => {
     getServId();
   }, []);
 
-  // console.log('SNGL SRV2:', );
+  console.log('SNGL SRV2:', service.reviews);
   return (
     <div>
       <Container>
-        {/* <h1>{service.service}</h1>
-        <Rating value={service.rating} text={`${service.numReviews} reviews`} />
-        <Image
-          src={service.image_url}
-          style={{ objectFit: 'fit' }}
-          fluid
-        ></Image>
-
-        <p>{service.description}</p>
-
-        <p>{service.duration}</p>
-        <p>${service.price}</p> */}
-
         <Link to='/services'>
           <Button className=' btn-light my-3'>Go Back</Button>
         </Link>
@@ -55,7 +50,7 @@ const ViewService = (props) => {
             <Image
               src={service.image_url}
               alt={service.service}
-              style={{ objectFit: 'fit' }}
+              // style={{ objectFit: 'fit' }}
               fluid
             ></Image>
           </Col>
@@ -83,7 +78,7 @@ const ViewService = (props) => {
                   <Row>
                     <Col>Price:</Col>
                     <Col>
-                      <stong> ${service.price}</stong>
+                      <strong> ${service.price}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -94,6 +89,39 @@ const ViewService = (props) => {
                 </ListGroup.Item>
               </ListGroup>
             </Card>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={6}>
+            <h2>Reviews</h2>
+            <ListGroup variant='flush'>
+              {service.reviews ? (
+                service.reviews.map((review) => (
+                  <ListGroup.Item key={review._id}>
+                    <strong>{review.user_id.name}</strong>
+                    <Rating value={review.rating} />
+                    <p>{review.createdAt.substring(0, 10)}</p>
+                    <p>{review.comment}</p>
+                  </ListGroup.Item>
+                ))
+              ) : (
+                <Alert variant='warning'>No comments</Alert>
+              )}
+            </ListGroup>
+          </Col>
+          <Col>
+            <ListGroup>
+              <ListGroup.Item>
+                <h2>Write Review</h2>
+                <CreateReview
+                  {...props}
+                  rating={rating}
+                  service_id={service._id}
+                  currentUser={props.currentUser}
+                />
+              </ListGroup.Item>
+            </ListGroup>
           </Col>
         </Row>
       </Container>
