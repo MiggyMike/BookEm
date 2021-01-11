@@ -14,6 +14,7 @@ import {
   CardGroup,
   Image,
   Spinner,
+  ListGroup,
 } from 'react-bootstrap';
 import Loader from '../components/Loading';
 
@@ -93,62 +94,76 @@ function Home(props) {
           Welcome to Book'Em! All stop shop for sharing a product or service you
           provide to allow others to book or purchase.
         </p>
+
+        <Row>
+          <div className='mx-auto'>
+            {props.authenticated && props.currentUser ? null : (
+              <Card.Body>
+                <Row>
+                  <Col sm={6} md={6} lg={3} className='mr-auto'>
+                    <LinkContainer to='/register'>
+                      <Button>Register</Button>
+                    </LinkContainer>
+                  </Col>
+
+                  <Col sm={6} md={6} lg={3}>
+                    <LinkContainer to='/login'>
+                      <Button>Login</Button>
+                    </LinkContainer>
+                  </Col>
+                </Row>
+              </Card.Body>
+            )}
+          </div>
+        </Row>
+
         <Container>
           <Row>
             {services.length ? (
               services.map((service, index) => (
-                <CardGroup key={service._id}>
-                  <Card style={{ width: '15rem' }}>
-                    <Card.Img
-                      variant='top'
-                      src={service.image_url}
-                      onClick={() =>
-                        props.history.push(`/services/${service._id}`)
-                      }
-                    />
-                    <Card.Body>
-                      <Card.Title>{service.service}</Card.Title>
-                      <Card.Text className='text-truncate'>
-                        {service.description}
-                      </Card.Text>
-                      <Card.Text>{service.duration}</Card.Text>
-                      <Card.Text>${service.price}</Card.Text>
-                      <Card.Text>
+                <Col sm={6} md={6} lg={3}>
+                  <CardGroup key={service._id}>
+                    <Card style={{ width: '15rem' }}>
+                      <Card.Img
+                        variant='top'
+                        src={service.image_url}
+                        onClick={() =>
+                          props.history.push(`/services/${service._id}`)
+                        }
+                      />
+                      <Card.Body>
+                        <Card.Title>{service.service}</Card.Title>
+                        <Card.Text className='text-truncate'>
+                          {service.description}
+                        </Card.Text>
+                        <Card.Text>{service.duration}</Card.Text>
+                        <Card.Text>${service.price}</Card.Text>
+                        <Card.Text>
+                          <small className='text-muted'>
+                            {service.rating} from {service.numReviews} reveiws
+                          </small>
+                        </Card.Text>
+                        <Card.Text>
+                          <Rating
+                            value={service.rating}
+                            text={`${service.numReviews} reviews`}
+                          />
+                        </Card.Text>
+                      </Card.Body>
+                      <Card.Footer>
                         <small className='text-muted'>
-                          {service.rating} from {service.numReviews} reveiws
+                          {service.user_name}
                         </small>
-                      </Card.Text>
-                      <Card.Text>
-                        <Rating
-                          value={service.rating}
-                          text={`${service.numReviews} reviews`}
-                        />
-                      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small className='text-muted'>{service.user_name}</small>
-                    </Card.Footer>
-                  </Card>
-                </CardGroup>
+                      </Card.Footer>
+                    </Card>
+                  </CardGroup>
+                </Col>
               ))
             ) : (
               <Loader />
             )}
           </Row>
         </Container>
-
-        <div>
-          {props.authenticated && props.currentUser ? null : (
-            <div>
-              <LinkContainer to='/register'>
-                <Button>Register</Button>
-              </LinkContainer>
-              <LinkContainer to='/login'>
-                <Button>Login</Button>
-              </LinkContainer>
-            </div>
-          )}
-        </div>
       </Container>
     </div>
   );
