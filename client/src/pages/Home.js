@@ -15,6 +15,7 @@ import {
   Image,
   Spinner,
 } from 'react-bootstrap';
+import Loader from '../components/Loading';
 
 function Home(props) {
   const [services, setServices] = useState([]);
@@ -130,9 +131,7 @@ function Home(props) {
                 </CardGroup>
               ))
             ) : (
-              <Spinner animation='border' role='status'>
-                <span className='sr-only'>Loading...</span>
-              </Spinner>
+              <Loader />
             )}
           </Row>
         </Container>
