@@ -71,7 +71,7 @@ const Profile = (props) => {
                           variant=''
                           eventKey='0'
                         >
-                          <i class='fas fa-ellipsis-v'></i>
+                          <i className='fas fa-ellipsis-v'></i>
                         </Accordion.Toggle>
 
                         <Accordion.Collapse eventKey='0'>
