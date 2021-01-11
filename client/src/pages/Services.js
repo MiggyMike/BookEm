@@ -19,7 +19,7 @@ const Services = (props) => {
     try {
       const res = await __GetServices();
       setServices(res);
-      console.log('SRV:', res);
+      // console.log('SRV:', res);
     } catch (error) {
       throw error;
     }
@@ -29,7 +29,7 @@ const Services = (props) => {
     getServs();
   }, []);
 
-  console.log('SRV2:', props);
+  console.log('SRV2:', services);
   return (
     <div>
       <Container>
@@ -37,8 +37,8 @@ const Services = (props) => {
         <Row>
           {services.length &&
             services.map((service, index) => (
-              <Col sm={6} md={6} lg={3}>
-                <CardGroup key={service._id}>
+              <Col sm={6} md={6} lg={3} key={service._id}>
+                <CardGroup>
                   <Card>
                     <Card.Img
                       variant='top'
@@ -72,7 +72,7 @@ const Services = (props) => {
                       </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                      <small className='text-muted'>User name</small>
+                      <small className='text-muted'>USER NAME</small>
                     </Card.Footer>
                   </Card>
                 </CardGroup>
