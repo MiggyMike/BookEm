@@ -18,6 +18,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import CreateReview from '../components/CreateReview';
 import Login from './Login';
 import Services from './Services';
+import Loader from '../components/Loading';
 
 const ViewService = (props) => {
   const [service, setService] = useState({});
@@ -93,7 +94,7 @@ const ViewService = (props) => {
         </Row>
 
         <Row>
-          {service.reviews ? (
+          {service.reviews.length ? (
             service.reviews.map((review) => (
               <Col md={6} key={review._id}>
                 <h2>Reviews</h2>
@@ -127,13 +128,20 @@ const ViewService = (props) => {
             <ListGroup>
               <ListGroup.Item>
                 <h2>Write Review</h2>
-                <CreateReview
-                  {...props}
-                  rating={rating}
-                  service_id={service._id}
-                  currentUser={props.currentUser}
-                  service={service}
-                />
+                {props.currentUser !== null &&
+                props.currentUser !== undefined ? (
+                  <CreateReview
+                    {...props}
+                    rating={rating}
+                    currentUser={props.currentUser}
+                    service={service}
+                  />
+                ) : (
+                  <p>
+                    Please <Link to='/login'>login</Link> or{' '}
+                    <Link to='/register'>register</Link> to leave a comment
+                  </p>
+                )}
               </ListGroup.Item>
             </ListGroup>
           </Col>
