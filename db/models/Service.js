@@ -42,13 +42,13 @@ module.exports = new Schema(
     reviews: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'review',
+        ref: 'reviews',
       },
     ],
-    name: {
-      type: Schema.Types.ObjectId,
-      ref: 'users',
-    },
+    // user_name: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'users',
+    // },
   },
   { timestamps: true }
 );

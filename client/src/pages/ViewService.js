@@ -19,10 +19,12 @@ import CreateReview from '../components/CreateReview';
 import Login from './Login';
 import Services from './Services';
 import Loader from '../components/Loading';
+import { __GetReviewsByService } from '../services/ReviewServices';
 
 const ViewService = (props) => {
   const [service, setService] = useState({});
   const [rating, setRating] = useState(0);
+  const [reviews, setReviews] = useState({});
   // const [comment, setComment] = useState('');
 
   const getServId = async () => {
@@ -35,11 +37,21 @@ const ViewService = (props) => {
     }
   };
 
+  const getReviews = async () => {
+    try {
+      const foundReviews = await __GetReviewsByService(
+        props.match.params.service_id
+      );
+      setReviews({ reviews: foundReviews });
+    } catch (error) {}
+  };
+
   useEffect(() => {
     getServId();
+    getReviews();
   }, []);
 
-  console.log('SNGL SRV2:', service);
+  console.log('SNGL SRV2:', reviews);
   return (
     <div>
       <Container>
@@ -94,36 +106,38 @@ const ViewService = (props) => {
         </Row>
 
         <Row>
-          {service.reviews ? (
-            service.reviews.map((review) => (
-              <Col md={6} key={review._id}>
+          <Col md={6}>
+            <h2>Reviews</h2>
+            {service.reviews ? (
+              service.reviews.map((review) => (
+                <div key={review._id}>
+                  <ListGroup variant='flush'>
+                    <ListGroup.Item>
+                      <strong>{review.user_id.name}</strong>
+                      <Row>
+                        <Col>
+                          <div>{review.comment}</div>
+                        </Col>
+                        <Rating value={review.rating} />
+                      </Row>
+                      <div>
+                        <small className='text-muted'>
+                          {review.createdAt.substring(0, 10)}
+                        </small>
+                      </div>
+                    </ListGroup.Item>
+                  </ListGroup>
+                </div>
+              ))
+            ) : (
+              <div>
                 <h2>Reviews</h2>
                 <ListGroup variant='flush'>
-                  <ListGroup.Item>
-                    <strong>{review.user_id.name}</strong>
-                    <Row>
-                      <Col>
-                        <div>{review.comment}</div>
-                      </Col>
-                      <Rating value={review.rating} />
-                    </Row>
-                    <div>
-                      <small className='text-muted'>
-                        {review.createdAt.substring(0, 10)}
-                      </small>
-                    </div>
-                  </ListGroup.Item>
+                  <Alert variant='warning'>No comments</Alert>
                 </ListGroup>
-              </Col>
-            ))
-          ) : (
-            <Col md={6}>
-              <h2>Reviews</h2>
-              <ListGroup variant='flush'>
-                <Alert variant='warning'>No comments</Alert>
-              </ListGroup>
-            </Col>
-          )}
+              </div>
+            )}
+          </Col>
           <Col>
             <ListGroup>
               <ListGroup.Item>

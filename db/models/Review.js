@@ -5,6 +5,7 @@ module.exports = new Schema(
     name: {
       type: String,
       required: true,
+      ref: 'users',
     },
     rating: {
       type: Number,
@@ -16,13 +17,11 @@ module.exports = new Schema(
     },
     user_id: {
       type: Schema.Types.ObjectId,
-      // required: true,
       ref: 'users',
     },
     service_id: {
       type: Schema.Types.ObjectId,
-      // required: true,
-      ref: 'service',
+      ref: 'services',
     },
   },
   { timestamps: true }

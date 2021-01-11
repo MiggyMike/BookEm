@@ -22,6 +22,8 @@ const CreateReview = async (req, res) => {
 //     const review = new Review({
 //       ...req.body,
 //       user_id: req.params.user_id,
+//       service_id: req.params.service_id,
+//       name: req.params.user_name,
 //     });
 //     await review.save();
 //     await Service.findByIdAndUpdate(
@@ -38,6 +40,14 @@ const CreateReview = async (req, res) => {
 //   }
 // };
 
+const GetReviewByService = async (req, res) => {
+  try {
+    const reviews = await Review.find({ service_id: req.params.service_id });
+    res.send(reviews);
+  } catch (error) {
+    throw error;
+  }
+};
 // const RemoveReview = async (req, res) => {
 //   try {
 //     await Review.deleteOne({ _id: req.params.review_id });
@@ -85,6 +95,7 @@ const UpdateReview = async (req, res) => {
 
 module.exports = {
   CreateReview,
+  GetReviewByService,
   RemoveReview,
   UpdateReview,
 };
