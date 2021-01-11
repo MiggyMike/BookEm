@@ -72,7 +72,9 @@ const Services = (props) => {
                       </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                      <small className='text-muted'>USER NAME</small>
+                      <small className='text-muted'>
+                        {service.user_id.name}
+                      </small>
                     </Card.Footer>
                   </Card>
                 </CardGroup>
