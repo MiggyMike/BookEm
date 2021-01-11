@@ -38,7 +38,7 @@ function Register(props) {
     try {
       const register = await __RegisterUser(formState);
       props.toggleAuthenticated(true, register.user);
-      props.history.push('/profile');
+      props.history.push('/login');
     } catch (error) {
       //   console.log('ACCT RESP2:', error);
       setFormError(true);
