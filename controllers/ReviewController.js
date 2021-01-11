@@ -1,22 +1,42 @@
 const { Service, Review } = require('../db/schema');
 
+// const CreateReview = async (req, res) => {
+//   const newReview = new Review({ ...req.body, user_id: req.params.user_id });
+//   newReview.save();
+//   res.send(newReview);
+// };
+
 const CreateReview = async (req, res) => {
   try {
-    const review = new Review({ ...req.body, user_id: req.params.user_id });
-    review.save();
-    await Service.update(
-      { _id: req.params.service_id },
-      {
-        $push: {
-          reviews: review,
-        },
-      }
-    );
+    const review = await Review.create({
+      ...req.body,
+    });
     res.send(review);
   } catch (error) {
     throw error;
   }
 };
+
+// const CreateReview = async (req, res) => {
+//   try {
+//     const review = new Review({
+//       ...req.body,
+//       user_id: req.params.user_id,
+//     });
+//     await review.save();
+//     await Service.findByIdAndUpdate(
+//       { _id: req.params.service_id },
+//       {
+//         $push: {
+//           reviews: review,
+//         },
+//       }
+//     );
+//     res.send(review);
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 // const RemoveReview = async (req, res) => {
 //   try {
