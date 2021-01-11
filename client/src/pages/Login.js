@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { __LoginUser } from '../services/UserServices';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Alert } from 'react-bootstrap';
 
 function Login(props) {
   const [email, setEmail] = useState('');
@@ -69,7 +69,11 @@ function Login(props) {
             <p>Need to Register?</p>
           </Link>
         </div>
-        {formError ? <p>Error While Logging In</p> : <p></p>}
+        {formError ? (
+          <Alert variant='danger'>Error While Logging In</Alert>
+        ) : (
+          <p></p>
+        )}
         <Form />
       </Container>
     </div>
