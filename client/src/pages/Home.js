@@ -34,7 +34,8 @@ function Home(props) {
     getServs();
   }, []);
 
-  console.log('HM:', services);
+  console.log('HM:', props);
+  // console.log('HM:', services);
   return (
     <div>
       <Container>
@@ -137,7 +138,7 @@ function Home(props) {
         </Container>
 
         <div>
-          {!props.authenticaded && props.currentUser ? null : (
+          {props.authenticated && props.currentUser ? null : (
             <div>
               <LinkContainer to='/register'>
                 <Button>Register</Button>

@@ -73,7 +73,14 @@ function Router(props) {
             <Route
               exact
               path='/'
-              component={(props) => <Home {...props} services={services} />}
+              component={(props) => (
+                <Home
+                  {...props}
+                  services={services}
+                  currentUser={currentUser}
+                  authenticated={authenticated}
+                />
+              )}
             />
             <Route
               path='/register'
