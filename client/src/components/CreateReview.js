@@ -18,14 +18,15 @@ const CreateReview = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = {
-      comment: comment,
+      name: props.currentUser.name,
       rating: rating,
-      //   user_id: props.currentUser._id,
+      comment: comment,
+      user_id: props.currentUser._id,
     };
     try {
       await __CreateReview(formData);
-      console.log(comment);
-      props.history.push('/services');
+      console.log(formData);
+      props.history.push(`/services/`);
     } catch (error) {}
   };
 

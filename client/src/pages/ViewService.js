@@ -39,7 +39,7 @@ const ViewService = (props) => {
     getServId();
   }, []);
 
-  console.log('SNGL SRV2:', service.reviews);
+  console.log('SNGL SRV2:', service);
   return (
     <div>
       <Container>
@@ -94,7 +94,7 @@ const ViewService = (props) => {
         </Row>
 
         <Row>
-          {service.reviews.length ? (
+          {service.reviews ? (
             service.reviews.map((review) => (
               <Col md={6} key={review._id}>
                 <h2>Reviews</h2>

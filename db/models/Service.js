@@ -45,7 +45,7 @@ module.exports = new Schema(
         ref: 'review',
       },
     ],
-    user_name: {
+    name: {
       type: Schema.Types.ObjectId,
       ref: 'users',
     },
