@@ -138,7 +138,7 @@ const ViewService = (props) => {
                   />
                 ) : (
                   <p>
-                    Please <Link to='/login'>login</Link> or{' '}
+                    Please <Link to='/login'>login</Link> or
                     <Link to='/register'>register</Link> to leave a comment
                   </p>
                 )}
