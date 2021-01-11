@@ -37,15 +37,14 @@ module.exports = new Schema(
     },
     user_id: {
       type: Schema.Types.ObjectId,
-      required: true,
       ref: 'users',
     },
-    // reviews: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'reviews',
-    //   },
-    // ],
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'review',
+      },
+    ],
     user_name: {
       type: Schema.Types.ObjectId,
       ref: 'users',
