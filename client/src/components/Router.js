@@ -134,7 +134,11 @@ function Router(props) {
             <Route
               path='/services/:service_id'
               component={(props) => (
-                <ViewService {...props} currentUser={currentUser} />
+                <ViewService
+                  {...props}
+                  currentUser={currentUser}
+                  services={services}
+                />
               )}
             />
           </Switch>
