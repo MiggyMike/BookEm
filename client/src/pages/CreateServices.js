@@ -50,7 +50,7 @@ function CreateServices(props) {
       rating: rating,
       numReviews: numReviews,
       user_id: props.currentUser._id,
-      user_name: props.name,
+      name: props.currentUser.name,
     };
     try {
       await __CreateService(formState, props.currentUser._id);
