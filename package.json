@@ -8,7 +8,9 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "db:seed": "node ./db/seed.js"
+    "db:seed": "node ./db/seed.js",
+    "build": "cd client && rm -rf build && npm install && npm run build"
+
   },
   "author": "Michael Jennings",
   "license": "ISC",
