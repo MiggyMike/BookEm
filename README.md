@@ -1,4 +1,4 @@
-# BookIt
+# BookEm
 
 MERN fullstack e-commerce application
 
@@ -6,7 +6,7 @@ MERN fullstack e-commerce application
 
 ### Michael Jennings
 
-[Website](https://miggymike.github.io/) | [LinkedIn](https://www.linkedin.com/in/mjennings6/) | [Book It](.html)
+[Website](https://miggymike.github.io/) | [LinkedIn](https://www.linkedin.com/in/mjennings6/) | [Book Em](.html)
 
 ---
 
