@@ -4,19 +4,19 @@ module.exports = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      // required: true,
     },
     rating: {
       type: Number,
-      required: true,
+      // required: true,
     },
     comment: {
       type: String,
-      required: true,
+      // required: true,
     },
     user_id: {
       type: Schema.Types.ObjectId,
-      required: true,
+      // required: true,
       ref: 'users',
     },
   },
