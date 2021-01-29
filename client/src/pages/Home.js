@@ -178,7 +178,7 @@ function Home(props) {
                                 </Col>
                             ))
                         ) : (
-                            <null />
+                            <Loader />
                         )}
                     </Row>
                 </Container>
