@@ -19,6 +19,7 @@ function Login(props) {
     };
 
     const handleSubmit = async (event) => {
+        console.log('HIT SUBMIT:', email, password);
         event.preventDefault();
 
         const formState = {
@@ -27,10 +28,12 @@ function Login(props) {
         };
         try {
             const login = await __LoginUser(formState);
+            // console.log('Login:', login);
             props.toggleAuthenticated(true, login.user);
             props.history.push('/profile');
+            console.log(login.user);
         } catch (error) {
-            //   console.log('ACCT RESP2:', error);
+            console.log('ACCT RESP2:', error);
             setFormError(true);
         }
     };
@@ -46,20 +49,20 @@ function Login(props) {
                     <Form.Group controlId='formGroupEmail'>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
-                            type='email'
-                            placeholder='Enter email'
-                            name='email'
                             className='form-input'
+                            placeholder='Email'
+                            name='email'
+                            type='email'
                             onChange={handleEmail}
                         />
                     </Form.Group>
                     <Form.Group controlId='formGroupPassword'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
-                            type='password'
+                            className='form-input'
                             placeholder='Password'
                             name='password'
-                            className='form-input'
+                            type='password'
                             onChange={handlePassword}
                         />
                     </Form.Group>
