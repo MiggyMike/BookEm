@@ -12,7 +12,10 @@ export const __CreateService = async (formData, userId) => {
 
 export const __GetServices = async (page, limit) => {
     try {
-        const res = await ApiClient.get(`/services/`);
+        const res = await ApiClient.get(
+            `/services/`
+            // `/services?page=${page || 1}&limit=${limit || 10}`
+        );
         return res.data;
     } catch (error) {
         throw error;

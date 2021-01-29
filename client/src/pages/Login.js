@@ -22,12 +22,8 @@ function Login(props) {
         console.log('HIT SUBMIT:', email, password);
         event.preventDefault();
 
-        const formState = {
-            email: email,
-            password: password,
-        };
         try {
-            const login = await __LoginUser(formState);
+            const login = await __LoginUser(email, password);
             // console.log('Login:', login);
             props.toggleAuthenticated(true, login.user);
             props.history.push('/profile');
@@ -53,6 +49,7 @@ function Login(props) {
                             placeholder='Email'
                             name='email'
                             type='email'
+                            value={email}
                             onChange={handleEmail}
                         />
                     </Form.Group>
@@ -63,6 +60,7 @@ function Login(props) {
                             placeholder='Password'
                             name='password'
                             type='password'
+                            value={password}
                             onChange={handlePassword}
                         />
                     </Form.Group>
