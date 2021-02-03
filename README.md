@@ -6,7 +6,7 @@ MERN fullstack e-commerce application
 
 ### Michael Jennings
 
-[Website](https://miggymike.github.io/) | [LinkedIn](https://www.linkedin.com/in/mjennings6/) | [Book Em](.html)
+[Portfolio](https://miggymike.github.io/) | [LinkedIn](https://www.linkedin.com/in/mjennings6/) | [Book Em](http://book-em2021.herokuapp.com/)
 
 ---
 
@@ -37,10 +37,10 @@ As a Creative one can do the following:
 
 - MongoDB
 - Express
-- React/Redux
+- React
 - Node
 - HMTL/CSS/JavaScript
-- Mongoose
+- MongoDB
 - Acuity(schedueling app)
 
 ---
